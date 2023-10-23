@@ -1,6 +1,6 @@
 module github.com/VictorMarcolino/artifact-manipulator
 
-go 1.21.1
+go 1.18
 
 require (
 	github.com/onsi/ginkgo/v2 v2.13.0
