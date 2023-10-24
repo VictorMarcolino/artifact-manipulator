@@ -2,5 +2,7 @@ package adapters
 
 import "github.com/VictorMarcolino/artifact-manipulator/pkg/adapters/filesystemadapter"
 
-var NewTemporaryFileSystemArtifactRepository = filesystemadapter.NewTemporaryFileSystemArtifactRepository
-var NewFileSystemArtifactRepository = filesystemadapter.NewFileSystemArtifactRepository
+var (
+	NewTemporaryFileSystemArtifactRepository = filesystemadapter.NewTemporaryFileSystemArtifactRepository
+	NewFileSystemArtifactRepository          = filesystemadapter.NewFileSystemArtifactRepository
+)

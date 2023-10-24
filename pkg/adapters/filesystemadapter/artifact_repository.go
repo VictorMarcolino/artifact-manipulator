@@ -13,7 +13,7 @@ func (fs *ArtifactRepository) GetArtifact(id string) (io.ReadCloser, error) {
 func (fs *ArtifactRepository) PushArtifact(id string, c io.Reader) error {
 	filePath := filepath.Join(fs.BaseDir, id)
 	dir := filepath.Dir(filePath)
-	if err := os.MkdirAll(dir, 0755); err != nil {
+	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return err
 	}
 	f, err := os.Create(filePath)
@@ -22,7 +22,7 @@ func (fs *ArtifactRepository) PushArtifact(id string, c io.Reader) error {
 	}
 	defer f.Close()
 	// Set file permissions to r-xr-xr-x
-	if err = os.Chmod(filePath, 0755); err != nil {
+	if err = os.Chmod(filePath, 0o755); err != nil {
 		return err
 	}
 	_, err = io.Copy(f, c)
@@ -56,7 +56,6 @@ func (fs *ArtifactRepository) ListArtifacts() ([]string, error) {
 		}
 		return nil
 	})
-
 	if err != nil {
 		return nil, err
 	}

@@ -2,16 +2,17 @@ package specs
 
 import (
 	"bytes"
+	"io"
+
 	"github.com/VictorMarcolino/artifact-manipulator/pkg/core/ports"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
-	"io"
 )
 
 func ArtifactRepositorySpec(repoCreator func() ports.ArtifactRepositoryI) {
 	var repo ports.ArtifactRepositoryI
 	var testArtifactID string = "some-artifact-id"
-	var testArtifactContent = "sample content for artifact"
+	testArtifactContent := "sample content for artifact"
 
 	BeforeEach(func() {
 		repo = repoCreator()

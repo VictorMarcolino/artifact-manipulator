@@ -1,8 +1,9 @@
 package filesystemadapter
 
 import (
-	"github.com/VictorMarcolino/artifact-manipulator/pkg/core/ports"
 	"os"
+
+	"github.com/VictorMarcolino/artifact-manipulator/pkg/core/ports"
 )
 
 type ArtifactRepository struct {
@@ -20,7 +21,7 @@ func NewTemporaryFileSystemArtifactRepository() (*ArtifactRepository, error) {
 }
 
 func NewFileSystemArtifactRepository(baseDir string) (*ArtifactRepository, error) {
-	if err := os.MkdirAll(baseDir, 0755); err != nil {
+	if err := os.MkdirAll(baseDir, 755); err != nil {
 		return nil, err
 	}
 	return &ArtifactRepository{BaseDir: baseDir}, nil
